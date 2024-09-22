@@ -1,25 +1,30 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const initialState = {
-  items: ['Apple', 'Banana', 'Orange', 'Mango', 'Grapes'],
-  searchTerm: '',
-};
-
-const itemsSlice = createSlice({
+export const itemsSlice = createSlice({
   name: 'items',
-  initialState,
+  initialState: {
+    items: [],
+    searchTerm: '',
+    currentPage: 1,  // Track the current page
+    pageSize: 4,     // Number of items per page
+  },
   reducers: {
+    setItems: (state, action) => {
+      state.items = action.payload;
+    },
     setSearchTerm: (state, action) => {
       state.searchTerm = action.payload;
+      state.currentPage = 1; // Reset page when search changes
+    },
+    setCurrentPage: (state, action) => {
+      state.currentPage = action.payload;
+    },
+    setPageSize: (state, action) => {
+      state.pageSize = action.payload;
     },
   },
 });
 
-export const { setSearchTerm } = itemsSlice.actions;
-
-export const selectFilteredItems = (state) => {
-  const { items, searchTerm } = state.items;
-  return items.filter((item) => item.toLowerCase().includes(searchTerm.toLowerCase()));
-};
+export const { setItems, setSearchTerm, setCurrentPage, setPageSize } = itemsSlice.actions;
 
 export default itemsSlice.reducer;
