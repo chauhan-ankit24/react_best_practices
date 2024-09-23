@@ -46,8 +46,4 @@ Visit http://localhost:3000 in your browser to view the application.
 
 5. Running Tests:
     ```bash
-     npm test
-    
-    
-    
-    
+     npm test    
