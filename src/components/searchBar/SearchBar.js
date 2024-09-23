@@ -1,6 +1,6 @@
 import React, { useRef, useCallback } from 'react';
 import { useDispatch } from 'react-redux';
-import { setSearchTerm } from '../features/items/itemsSlice';
+import { setSearchTerm } from '../../features/items/itemsSlice';
 import { debounce } from 'lodash'; // Import debounce from lodash
 
 const SearchBar = () => {
